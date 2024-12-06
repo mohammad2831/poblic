@@ -153,10 +153,12 @@ class UserLoginView(APIView):
             password = ser_data.validated_data['password']         
             user = get_object_or_404(User, phone_number=phone)        
             if user.check_password(password):
-                token, created = Token.objects.get_or_create(user=user)
-                print(token.key)
+                refresh = RefreshToken.for_user(user)
 
-                return Response({'token': token.key, 'status': 202})
+                access_token = str(refresh.access_token)
+
+
+                return Response({'token': access_token, 'status': 202})
             else:
                 return Response({'error': 'Invalid credentials'}, status=400)
 
