@@ -52,7 +52,7 @@ class QuestionView(APIView):
 
             if next_stage:
                 next_stage_serializer = StageSerializer(next_stage)
-                return Response({'message': message,'next_stage': next_stage_serializer.data}, status=status.HTTP_200_OK)
+                return Response({'message': message,'stage': next_stage_serializer.data}, status=status.HTTP_200_OK)
             
 
             else:

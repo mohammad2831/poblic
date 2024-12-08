@@ -34,7 +34,7 @@ class StageTestSerializer(serializers.ManyRelatedField):
 class SelectQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ['title', 'difficulty','score','description']
+        fields = ['title', 'difficulty','score','question_latex','description']
 
 
 
@@ -44,7 +44,7 @@ class AllQuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ['id','title', 'difficulty','is_solved']
+        fields = ['id','title', 'difficulty','question_latex','is_solved']
 
     def get_is_solved(self, obj):
         user = self.context['request'].user
