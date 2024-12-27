@@ -2,10 +2,18 @@ from rest_framework import serializers
 from . models import Question , Stage, UserSolvedQuestion
 from rest_framework import serializers
 
+class QuestionFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = ['question_latex',]
+
+
 class StageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stage
-        fields = ['stage_number', 
+        fields = [
+                'stage_number', 
+                
                   'option1_title', 
 
                   'option2_title', 
